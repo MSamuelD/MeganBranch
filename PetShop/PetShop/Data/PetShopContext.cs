@@ -8,12 +8,14 @@ using PetShop.Models;
 
 namespace PetShop.Data
 {
-    public class PetShopContext :DbContext
+    public class PetShopContext : DbContext
     {
         public DbSet<Pet> Pets { get; set; }
+        public DbSet<Customer> Customers { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=petshop.db");
+            optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=PetShopDB;Trusted_Connection=True;TrustServerCertificate=True");
+            return;
         }
     }
 }
