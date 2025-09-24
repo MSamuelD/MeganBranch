@@ -8,5 +8,8 @@ namespace PetShop.Models
 {
     public class Customer : Person
     {
+        public Customer() { }
+        public List<Pet> Pets { get; set; }
+        public List<DateTime> Bookings { get; set; }
     }
 }
