@@ -9,6 +9,15 @@
       Title="Login">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="71*"/>
+            <ColumnDefinition Width="138*"/>
+            <ColumnDefinition Width="592*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="28*"/>
+            <RowDefinition Height="197*"/>
+        </Grid.RowDefinitions>
+        <Button Grid.Row="0" Grid.Column="0"></Button>
     </Grid>
 </Page>
