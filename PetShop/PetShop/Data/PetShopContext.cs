@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PetShop.Models;
+using System.Reflection.Metadata;
 
 namespace PetShop.Data
 {
@@ -26,7 +27,21 @@ namespace PetShop.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Models.Type>().HasData(
+                new Models.Type { Id = 1, Name = "Dog" },
+                new Models.Type { Id = 2, Name = "Cat" },
+                new Models.Type { Id = 3, Name = "Bird" },
+                new Models.Type { Id = 4, Name = "Fish" },
+                new Models.Type { Id = 5, Name = "Reptile" }
+            );
+            for (int i = 9; i <= 17; i++)
+            {
+                modelBuilder.Entity<Timeslot>().HasData(
+                );
+            }
+            modelBuilder.Entity<Timeslot>().HasData();
 
+            
         }
     }
 }

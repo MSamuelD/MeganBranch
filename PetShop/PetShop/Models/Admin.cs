@@ -8,5 +8,6 @@ namespace PetShop.Models
 {
     public class  Admin : Staff
     {
+
     }
 }
