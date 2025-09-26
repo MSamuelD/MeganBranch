@@ -17,6 +17,7 @@ namespace PetShop.Data
         public DbSet<Staff> Staff {  get; set; }
         public DbSet<Admin> Admin { get; set; }
         public DbSet <Models.Type> Types { get; set; }
+        public DbSet<Appointment> Appointments { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=PetShopDB;Trusted_Connection=True;TrustServerCertificate=True");
