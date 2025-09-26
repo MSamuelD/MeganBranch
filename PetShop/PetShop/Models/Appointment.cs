@@ -8,7 +8,6 @@ namespace PetShop.Models
 {
     public class Appointment
     {
-        public Appointment() { }
         public int Id { get; set; }
         public Timeslot Timeslot { get; set; }
         public Pet Pet { get; set; }
