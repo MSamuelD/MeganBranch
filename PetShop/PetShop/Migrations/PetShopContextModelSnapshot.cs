@@ -51,7 +51,7 @@ namespace PetShop.Migrations
 
                     b.HasIndex("TimeslotTime");
 
-                    b.ToTable("Appointments");
+                    b.ToTable("Appointments", (string)null);
                 });
 
             modelBuilder.Entity("PetShop.Models.Customer", b =>
@@ -111,7 +111,7 @@ namespace PetShop.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Customers");
+                    b.ToTable("Customers", (string)null);
                 });
 
             modelBuilder.Entity("PetShop.Models.Pet", b =>
@@ -138,7 +138,7 @@ namespace PetShop.Migrations
 
                     b.HasIndex("TypeId");
 
-                    b.ToTable("Pets");
+                    b.ToTable("Pets", (string)null);
                 });
 
             modelBuilder.Entity("PetShop.Models.Staff", b =>
@@ -199,7 +199,7 @@ namespace PetShop.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Staff");
+                    b.ToTable("Staff", (string)null);
 
                     b.HasDiscriminator().HasValue("Staff");
 
@@ -216,7 +216,7 @@ namespace PetShop.Migrations
 
                     b.HasKey("Time");
 
-                    b.ToTable("Timeslots");
+                    b.ToTable("Timeslots", (string)null);
                 });
 
             modelBuilder.Entity("PetShop.Models.Type", b =>
@@ -233,7 +233,7 @@ namespace PetShop.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Types");
+                    b.ToTable("Types", (string)null);
 
                     b.HasData(
                         new
