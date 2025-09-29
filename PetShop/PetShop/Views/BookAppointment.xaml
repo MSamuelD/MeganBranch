@@ -8,6 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="BookAppointment">
 
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="6*"/>
@@ -35,14 +36,14 @@
             <TextBlock Text="Service:"></TextBlock>
             <TextBox TextWrapping="Wrap" AcceptsReturn="True" Height="50" SpellCheck.IsEnabled="True"></TextBox>
         </StackPanel>
-        <Grid Grid.Row="5"  Grid.ColumnSpan="4" >
+        <Grid x:Name="CancelBtn" Grid.Row="5"  Grid.ColumnSpan="4" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="20"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button Content="Submit" Width="100" Grid.Column="0" Height="30" Margin="0,0,10,0"/>
-            <Button Content="Cancel" Width="100" Grid.Column="2" Height="30" Margin="0,0,10,0"/>
+            <Button x:Name="SubmitBtn" Content="Submit" Width="100" Grid.Column="0" Height="30" Margin="0,0,10,0"/>
+            <Button x:Name="CancelBtn1" Content="Cancel" Width="100" Grid.Column="2" Height="30" Margin="0,0,10,0" Click="CancelBtn1_Click" />
         </Grid>
     </Grid>
 </Page>
