@@ -34,7 +34,8 @@ namespace PetShop.Data
             {
                 timeslots.Add(new Timeslot { Time = startDateTime.AddMinutes(minutes) });
             }
-            //https://github.com/MSamuelD/BeanSceneNew/blob/master/BeanSceneNew/Data/ApplicationDbContext.cs
+            //https://github.com/MSamuelD/BeanSceneNew/blob/master/BeanSceneNew/Data/ApplicationDbContext.cs line 94. 
+            //MSamuelD, Original code idea was from Michael Kirkwood-Smith (TAFE NSW Hornsby) a.k.a the GOAT in programming - Diploma in Advanced Programming - https://www.linkedin.com/in/michaelkirkwoodsmith/
             modelBuilder.Entity<Timeslot>().HasData(timeslots);
 
             base.OnModelCreating(modelBuilder);
@@ -45,12 +46,7 @@ namespace PetShop.Data
                 new Models.Type { Id = 4, Name = "Fish" },
                 new Models.Type { Id = 5, Name = "Reptile" }
             );
-            for (int i = 9; i <= 17; i++)
-            {
-                modelBuilder.Entity<Timeslot>().HasData(
-                );
-            }
-            modelBuilder.Entity<Timeslot>().HasData();
+
 
             
         }
