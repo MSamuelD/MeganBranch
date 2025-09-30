@@ -31,7 +31,7 @@
         </StackPanel>
         <StackPanel VerticalAlignment="Center" Grid.Row="1" Grid.Column="3">
             <TextBlock>Pick a time</TextBlock>
-            <ComboBox ItemsSource="{Binding BoxItems}"></ComboBox>
+            <ComboBox x:Name="TimeSlotBox" DisplayMemberPath="TimeFormatted" ItemsSource="{Binding BoxItems}"></ComboBox>
         </StackPanel>
         <StackPanel VerticalAlignment="Center" Grid.Row="2" Grid.Column="1" Margin="0,0,0,118" Grid.RowSpan="2" >
             <TextBlock Text="Pet name:"></TextBlock>
@@ -39,16 +39,16 @@
         </StackPanel>
         <StackPanel Grid.Row="3" Grid.Column="1">
             <TextBlock Text="Service:"></TextBlock>
-            <TextBox x:Name="ReasonBox" TextWrapping="Wrap" AcceptsReturn="True" Height="50" SpellCheck.IsEnabled="True"></TextBox>
+            <TextBox x:Name="DetailsBox" TextWrapping="Wrap" AcceptsReturn="True" Height="50" SpellCheck.IsEnabled="True"></TextBox>
         </StackPanel>
-        <Grid x:Name="CancelBtn" Grid.Row="4"  Grid.ColumnSpan="4" Margin="0,71,0,0" Grid.RowSpan="2" >
+        <Grid Grid.Row="4"  Grid.ColumnSpan="4" Margin="0,71,0,0" Grid.RowSpan="2" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="20"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Button x:Name="SubmitBtn" Content="Submit" Width="100" Grid.Column="0" Height="30" Margin="0,0,10,0" Click="SubmitBtn_Click"/>
-            <Button x:Name="CancelBtn1" Content="Cancel" Width="100" Grid.Column="2" Height="30" Margin="0,0,10,0" Click="CancelBtn1_Click" />
+            <Button x:Name="CancelBtn" Content="Cancel" Width="100" Grid.Column="2" Height="30" Margin="0,0,10,0" Click="CancelBtn1_Click" />
         </Grid>
     </Grid>
 </Page>
