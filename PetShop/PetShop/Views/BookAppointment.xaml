@@ -8,11 +8,13 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="BookAppointment">
 
+
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="6*"/>
-            <ColumnDefinition Width="43*"/>
-            <ColumnDefinition Width="111*"/>
+            <ColumnDefinition Width="30*"/>
+            <ColumnDefinition Width="215*"/>
+            <ColumnDefinition Width="244*"/>
+            <ColumnDefinition Width="311*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="61*"/>
@@ -22,27 +24,31 @@
             <RowDefinition Height="71*"/>
             <RowDefinition Height="50*"/>
         </Grid.RowDefinitions>
-        <TextBlock Text="Book an Appointment" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2" Height="31" Width="250"/>
+        <TextBlock Text="Book an Appointment" FontSize="24" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="2" Height="31" Width="250" Grid.ColumnSpan="2" Margin="153,0,0,0"/>
         <StackPanel Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" >
             <TextBlock Text="Select Date:" FontSize="16" VerticalAlignment="Center" Margin="0,0,10,0"/>
-            <DatePicker Name="AppointmentDatePicker" Width="200" Height="25"/>
+            <DatePicker x:Name="AppointmentDatePicker" Width="200" Height="25"/>
         </StackPanel>
-        <StackPanel Grid.Row="2" Grid.Column="1" >
+        <StackPanel VerticalAlignment="Center" Grid.Row="1" Grid.Column="3">
+            <TextBlock>Pick a time</TextBlock>
+            <ComboBox></ComboBox>
+        </StackPanel>
+        <StackPanel VerticalAlignment="Center" Grid.Row="2" Grid.Column="1" Margin="0,0,0,118" Grid.RowSpan="2" >
             <TextBlock Text="Pet name:"></TextBlock>
-            <TextBox></TextBox>
+            <TextBox x:Name="PetNameBox" ></TextBox>
         </StackPanel>
         <StackPanel Grid.Row="3" Grid.Column="1">
             <TextBlock Text="Service:"></TextBlock>
-            <TextBox TextWrapping="Wrap" AcceptsReturn="True" Height="50" SpellCheck.IsEnabled="True"></TextBox>
+            <TextBox x:Name="ReasonBox" TextWrapping="Wrap" AcceptsReturn="True" Height="50" SpellCheck.IsEnabled="True"></TextBox>
         </StackPanel>
-        <Grid Grid.Row="5"  Grid.ColumnSpan="4" >
+        <Grid x:Name="CancelBtn" Grid.Row="4"  Grid.ColumnSpan="4" Margin="0,71,0,0" Grid.RowSpan="2" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="20"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button Content="Submit" Width="100" Grid.Column="0" Height="30" Margin="0,0,10,0"/>
-            <Button Content="Cancel" Width="100" Grid.Column="2" Height="30" Margin="0,0,10,0"/>
+            <Button x:Name="SubmitBtn" Content="Submit" Width="100" Grid.Column="0" Height="30" Margin="0,0,10,0" Click="SubmitBtn_Click"/>
+            <Button x:Name="CancelBtn1" Content="Cancel" Width="100" Grid.Column="2" Height="30" Margin="0,0,10,0" Click="CancelBtn1_Click" />
         </Grid>
     </Grid>
 </Page>

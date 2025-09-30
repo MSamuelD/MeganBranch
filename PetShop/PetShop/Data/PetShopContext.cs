@@ -18,6 +18,7 @@ namespace PetShop.Data
         public DbSet<Staff> Staff {  get; set; }
         public DbSet<Admin> Admin { get; set; }
         public DbSet <Models.Type> Types { get; set; }
+        public DbSet<Session> Sessions { get; set; }
         public DbSet<Appointment> Appointments { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -26,6 +27,16 @@ namespace PetShop.Data
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            List<Timeslot> timeslots = new List<Timeslot>();
+            DateTime startDateTime = new DateTime(1, 1, 1, 9, 0, 0);  
+            DateTime endDateTime = new DateTime(1, 1, 1, 17, 0, 0);  
+            for (int minutes = 0; startDateTime.AddMinutes(minutes) <= endDateTime; minutes += 30)
+            {
+                timeslots.Add(new Timeslot { Time = startDateTime.AddMinutes(minutes) });
+            }
+            //https://github.com/MSamuelD/BeanSceneNew/blob/master/BeanSceneNew/Data/ApplicationDbContext.cs
+            modelBuilder.Entity<Timeslot>().HasData(timeslots);
+
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Models.Type>().HasData(
                 new Models.Type { Id = 1, Name = "Dog" },

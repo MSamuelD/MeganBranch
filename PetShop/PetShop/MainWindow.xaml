@@ -3,10 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PetShop"
+        xmlns:local="clr-namespace:PetShop" xmlns:UserControls="clr-namespace:PetShop.UserControls"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Frame Name="MainFrame"></Frame>
-    </Grid>
+        Title="MainWindow" Height="490" Width="800">
+    <StackPanel Orientation="Vertical">
+        <UserControls:Heading/>
+        <Frame Name="MainFrame" Source="Views/BookAppointment.xaml" ></Frame>
+    </StackPanel>
 </Window>

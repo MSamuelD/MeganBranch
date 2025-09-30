@@ -24,5 +24,22 @@ namespace PetShop.Views
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CancelBtn1_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Weather());
+        }
+
+        private void SubmitBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+   
     }
 }
