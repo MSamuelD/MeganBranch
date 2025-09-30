@@ -34,5 +34,12 @@ namespace PetShop.Views
         {
             this.NavigationService.Navigate(new Weather());
         }
+
+        private void SubmitBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+   
     }
 }
