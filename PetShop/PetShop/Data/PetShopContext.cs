@@ -11,7 +11,8 @@ namespace PetShop.Data
 {
     public class PetShopContext : DbContext
     {
-
+  
+ 
         public DbSet<Pet> Pets { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Timeslot> Timeslots { get; set; }
@@ -45,8 +46,8 @@ namespace PetShop.Data
                 new Models.Type { Id = 4, Name = "Fish" },
                 new Models.Type { Id = 5, Name = "Reptile" }
             );
+            modelBuilder.Entity<Appointment>().HasOne(e => e.StartTime).WithMany().OnDelete(DeleteBehavior.NoAction);
 
-            
         }
     }
 }

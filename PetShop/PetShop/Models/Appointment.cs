@@ -11,11 +11,10 @@ namespace PetShop.Models
     {
         public int Id { get; set; }
 
-        public Pet Pet { get; set; }
+        public string PetName { get; set; }
         public Customer Customer { get; set; }
         public string Details { get; set; }
         public Timeslot StartTime { get; set; }
-        public Timeslot EndTime { get; set; }
         [DataType(DataType.Date)]
         public DateOnly Date { get; set; }
     }

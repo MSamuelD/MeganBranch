@@ -31,7 +31,7 @@
         </StackPanel>
         <StackPanel VerticalAlignment="Center" Grid.Row="1" Grid.Column="3">
             <TextBlock>Pick a time</TextBlock>
-            <ComboBox></ComboBox>
+            <ComboBox ItemsSource="{Binding BoxItems}"></ComboBox>
         </StackPanel>
         <StackPanel VerticalAlignment="Center" Grid.Row="2" Grid.Column="1" Margin="0,0,0,118" Grid.RowSpan="2" >
             <TextBlock Text="Pet name:"></TextBlock>

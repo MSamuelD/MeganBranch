@@ -1,5 +1,8 @@
-﻿using System;
+﻿using PetShop.Data;
+using PetShop.Models;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +23,12 @@ namespace PetShop.Views
     /// </summary>
     public partial class BookAppointment : Page
     {
+        private readonly PetShopContext _context = new PetShopContext();
+        public readonly ObservableCollection<Timeslot> BoxItems;
         public BookAppointment()
         {
             InitializeComponent();
+            BoxItems = new ObservableCollection<Timeslot>(_context.Timeslots.ToList());
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
