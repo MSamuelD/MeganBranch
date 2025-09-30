@@ -15,6 +15,6 @@ namespace PetShop.Models
         public string Details { get; set; }
         public Timeslot StartTime { get; set; }
         public Timeslot EndTime { get; set; } 
-        public DateTime Date { get; set; }
+        public DateOnly Date { get; set; }
     }
 }
