@@ -13,5 +13,6 @@ namespace PetShop.Models
         [DataType(DataType.Time)]
         public DateTime Time { get; set; }
 
+
     }
 }

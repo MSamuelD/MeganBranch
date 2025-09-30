@@ -18,7 +18,6 @@ namespace PetShop.Data
         public DbSet<Staff> Staff {  get; set; }
         public DbSet<Admin> Admin { get; set; }
         public DbSet <Models.Type> Types { get; set; }
-        public DbSet<Session> Sessions { get; set; }
         public DbSet<Appointment> Appointments { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -46,7 +45,7 @@ namespace PetShop.Data
                 new Models.Type { Id = 4, Name = "Fish" },
                 new Models.Type { Id = 5, Name = "Reptile" }
             );
-
+            modelBuilder.Entity<Session>()
 
             
         }

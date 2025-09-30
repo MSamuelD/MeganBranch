@@ -13,6 +13,8 @@ namespace PetShop.Models
         public Pet Pet { get; set; }
         public Customer Customer { get; set; }
         public string Details { get; set; }
-        public Session Session { get; set; }
+        public Timeslot StartTime { get; set; }
+        public Timeslot EndTime { get; set; } 
+        public DateTime Date { get; set; }
     }
 }
