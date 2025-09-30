@@ -1,5 +1,8 @@
-﻿using System;
+﻿using PetShop.Data;
+using PetShop.Models;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,15 +23,15 @@ namespace PetShop.Views
     /// </summary>
     public partial class BookAppointment : Page
     {
+        private readonly PetShopContext _context = new PetShopContext();
         public BookAppointment()
         {
             InitializeComponent();
+            TimeSlotBox.ItemsSource = new ObservableCollection<Timeslot>(_context.Timeslots.ToList());
+       
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
 
-        }
 
         private void CancelBtn1_Click(object sender, RoutedEventArgs e)
         {
@@ -37,7 +40,25 @@ namespace PetShop.Views
 
         private void SubmitBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            if (TimeSlotBox.SelectedItem is Timeslot selectedTimeSlot && AppointmentDatePicker.SelectedDate.HasValue)
+            {
+                DateTime selectedDate = AppointmentDatePicker.SelectedDate.Value;
+                Appointment appointment = new Appointment
+                {
+                    Date = DateOnly.FromDateTime(selectedDate),
+                    StartTime = selectedTimeSlot,
+                    Details = DetailsBox.Text,
+                    PetName = PetNameBox.Text
+                };
+                _context.Appointments.Add(appointment);
+                _context.SaveChanges();
+                MessageBox.Show("Appointment booked successfully!");
+                this.NavigationService.Navigate(new Weather());
+            }
+            else
+            {
+                MessageBox.Show("Please select a date and time slot.");
+            }
         }
 
    

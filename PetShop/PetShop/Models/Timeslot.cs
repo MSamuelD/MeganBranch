@@ -12,6 +12,6 @@ namespace PetShop.Models
         [Key]
         [DataType(DataType.Time)]
         public DateTime Time { get; set; }
-
+        public string TimeFormatted { get => Time.ToString("hh:mm tt"); }
     }
 }
