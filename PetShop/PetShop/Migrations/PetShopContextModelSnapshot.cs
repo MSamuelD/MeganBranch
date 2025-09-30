@@ -40,7 +40,7 @@ namespace PetShop.Migrations
                     b.Property<int>("PetId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("SessionDate")
+                    b.Property<DateTime>("TimeslotTime")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
@@ -49,9 +49,9 @@ namespace PetShop.Migrations
 
                     b.HasIndex("PetId");
 
-                    b.HasIndex("SessionDate");
+                    b.HasIndex("TimeslotTime");
 
-                    b.ToTable("Appointments");
+                    b.ToTable("Appointments", (string)null);
                 });
 
             modelBuilder.Entity("PetShop.Models.Customer", b =>
@@ -111,7 +111,7 @@ namespace PetShop.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Customers");
+                    b.ToTable("Customers", (string)null);
                 });
 
             modelBuilder.Entity("PetShop.Models.Pet", b =>
@@ -138,27 +138,7 @@ namespace PetShop.Migrations
 
                     b.HasIndex("TypeId");
 
-                    b.ToTable("Pets");
-                });
-
-            modelBuilder.Entity("PetShop.Models.Session", b =>
-                {
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("EndTimeTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("StartTimeTime")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Date");
-
-                    b.HasIndex("EndTimeTime");
-
-                    b.HasIndex("StartTimeTime");
-
-                    b.ToTable("Sessions");
+                    b.ToTable("Pets", (string)null);
                 });
 
             modelBuilder.Entity("PetShop.Models.Staff", b =>
@@ -219,7 +199,7 @@ namespace PetShop.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Staff");
+                    b.ToTable("Staff", (string)null);
 
                     b.HasDiscriminator().HasValue("Staff");
 
@@ -231,79 +211,12 @@ namespace PetShop.Migrations
                     b.Property<DateTime>("Time")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool>("IsBooked")
+                        .HasColumnType("bit");
+
                     b.HasKey("Time");
 
-                    b.ToTable("Timeslots");
-
-                    b.HasData(
-                        new
-                        {
-                            Time = new DateTime(1, 1, 1, 9, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Time = new DateTime(1, 1, 1, 9, 30, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Time = new DateTime(1, 1, 1, 10, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Time = new DateTime(1, 1, 1, 10, 30, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Time = new DateTime(1, 1, 1, 11, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Time = new DateTime(1, 1, 1, 11, 30, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Time = new DateTime(1, 1, 1, 12, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Time = new DateTime(1, 1, 1, 12, 30, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Time = new DateTime(1, 1, 1, 13, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Time = new DateTime(1, 1, 1, 13, 30, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Time = new DateTime(1, 1, 1, 14, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Time = new DateTime(1, 1, 1, 14, 30, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Time = new DateTime(1, 1, 1, 15, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Time = new DateTime(1, 1, 1, 15, 30, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Time = new DateTime(1, 1, 1, 16, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Time = new DateTime(1, 1, 1, 16, 30, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Time = new DateTime(1, 1, 1, 17, 0, 0, 0, DateTimeKind.Unspecified)
-                        });
+                    b.ToTable("Timeslots", (string)null);
                 });
 
             modelBuilder.Entity("PetShop.Models.Type", b =>
@@ -320,7 +233,7 @@ namespace PetShop.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Types");
+                    b.ToTable("Types", (string)null);
 
                     b.HasData(
                         new
@@ -371,9 +284,9 @@ namespace PetShop.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("PetShop.Models.Session", "Session")
+                    b.HasOne("PetShop.Models.Timeslot", "Timeslot")
                         .WithMany()
-                        .HasForeignKey("SessionDate")
+                        .HasForeignKey("TimeslotTime")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -381,7 +294,7 @@ namespace PetShop.Migrations
 
                     b.Navigation("Pet");
 
-                    b.Navigation("Session");
+                    b.Navigation("Timeslot");
                 });
 
             modelBuilder.Entity("PetShop.Models.Pet", b =>
@@ -397,25 +310,6 @@ namespace PetShop.Migrations
                         .IsRequired();
 
                     b.Navigation("Type");
-                });
-
-            modelBuilder.Entity("PetShop.Models.Session", b =>
-                {
-                    b.HasOne("PetShop.Models.Timeslot", "EndTime")
-                        .WithMany()
-                        .HasForeignKey("EndTimeTime")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("PetShop.Models.Timeslot", "StartTime")
-                        .WithMany()
-                        .HasForeignKey("StartTimeTime")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("EndTime");
-
-                    b.Navigation("StartTime");
                 });
 
             modelBuilder.Entity("PetShop.Models.Customer", b =>

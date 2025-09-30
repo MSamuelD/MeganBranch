@@ -45,7 +45,6 @@ namespace PetShop.Data
                 new Models.Type { Id = 4, Name = "Fish" },
                 new Models.Type { Id = 5, Name = "Reptile" }
             );
-            modelBuilder.Entity<Session>()
 
             
         }

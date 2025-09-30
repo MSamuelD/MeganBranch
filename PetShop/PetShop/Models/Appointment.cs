@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +15,8 @@ namespace PetShop.Models
         public Customer Customer { get; set; }
         public string Details { get; set; }
         public Timeslot StartTime { get; set; }
-        public Timeslot EndTime { get; set; } 
+        public Timeslot EndTime { get; set; }
+        [DataType(DataType.Date)]
         public DateOnly Date { get; set; }
     }
 }
