@@ -42,10 +42,11 @@ namespace PetShop.Views
                 var result = await client.GetAsync(Url);
                 var jsonString = await result.Content.ReadAsStringAsync();
                 Root weatherInfo = JsonSerializer.Deserialize<Root>(jsonString);
-                TestThing.Text = (weatherInfo.sys.country);
+                TestThing.Text = (weatherInfo.weather[0].description);
+                WeatherIcon.Source = new BitmapImage(new Uri($"http://openweathermap.org/img/wn/{weatherInfo.weather[0].icon}.png"));
                 //https://www.youtube.com/watch?v=FEObLap1iGE
             }
-            
+
 
             //TestThing.Text = weatherInfo.city.name;
             //TestThing.Text = $"Weather in {weatherInfo.city.name}, {weatherInfo.city.country}\n" +
@@ -60,7 +61,8 @@ namespace PetShop.Views
         {
             Close();
         }
-        // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
+
+        //https://json2csharp.com/
         public class Clouds
         {
             public int all { get; set; }
