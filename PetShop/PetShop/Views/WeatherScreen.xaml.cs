@@ -35,62 +35,95 @@ namespace PetShop.Views
             InitializeComponent();
             getWeather();
         }
-        public void getWeather()
+        public async void getWeather()
         {
             using (var client = new HttpClient())
             {
-                var result = client.GetAsync(Url).Result;
-               
-                // ... inside getWeather()
-                var jsonString = result.Content.ReadAsStringAsync().Result;
-                TestThing.Text = jsonString;
+                var result = await client.GetAsync(Url);
+                var jsonString = await result.Content.ReadAsStringAsync();
+                Root weatherInfo = JsonSerializer.Deserialize<Root>(jsonString);
+                TestThing.Text = (weatherInfo.sys.country);
+                //https://www.youtube.com/watch?v=FEObLap1iGE
             }
             
-            
-                //TestThing.Text = weatherInfo.city.name;
-                //TestThing.Text = $"Weather in {weatherInfo.city.name}, {weatherInfo.city.country}\n" +
-                //    $"Temperature: {Math.Round(weatherInfo.lists[0].temp.day - 273.15)}°C\n" +
-                //    $"Min: {Math.Round(weatherInfo.lists[0].temp.min - 273.15)}°C, Max: {Math.Round(weatherInfo.lists[0].temp.max - 273.15)}°C\n" +
-                //    $"Humidity: {weatherInfo.lists[0].humidity}%\n" +
-                //    $"Description: {weatherInfo.lists[0].weather[0].description}";
-            
+
+            //TestThing.Text = weatherInfo.city.name;
+            //TestThing.Text = $"Weather in {weatherInfo.city.name}, {weatherInfo.city.country}\n" +
+            //    $"Temperature: {Math.Round(weatherInfo.lists[0].temp.day - 273.15)}°C\n" +
+            //    $"Min: {Math.Round(weatherInfo.lists[0].temp.min - 273.15)}°C, Max: {Math.Round(weatherInfo.lists[0].temp.max - 273.15)}°C\n" +
+            //    $"Humidity: {weatherInfo.lists[0].humidity}%\n" +
+            //    $"Description: {weatherInfo.lists[0].weather[0].description}";
+
         }
 
         private void CloseBtn_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }
-        public class WeatherInfo
+        // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
+        public class Clouds
         {
-            public City city { get; set; }
-            public List<List> lists { get; set; }
+            public int all { get; set; }
+        }
 
-        }
-        public class City
+        public class Coord
         {
-            public string name { get; set; }
-            public string country { get; set; }
+            public double lon { get; set; }
+            public double lat { get; set; }
         }
-        public class List
+
+        public class Main
         {
-            public Temp temp { get; set; }
+            public double temp { get; set; }
+            public double feels_like { get; set; }
+            public double temp_min { get; set; }
+            public double temp_max { get; set; }
+            public int pressure { get; set; }
             public int humidity { get; set; }
-            public List<Weather> weather { get; set; }
+            public int sea_level { get; set; }
+            public int grnd_level { get; set; }
         }
-        public class Temp
+
+        public class Root
         {
-            public double day { get; set; }
-            public double min { get; set; }
-            public double max { get; set; }
-            public double night { get; set; }
-        
+            public Coord coord { get; set; }
+            public List<Weather> weather { get; set; }
+            public string @base { get; set; }
+            public Main main { get; set; }
+            public int visibility { get; set; }
+            public Wind wind { get; set; }
+            public Clouds clouds { get; set; }
+            public int dt { get; set; }
+            public Sys sys { get; set; }
+            public int timezone { get; set; }
+            public int id { get; set; }
+            public string name { get; set; }
+            public int cod { get; set; }
         }
+
+        public class Sys
+        {
+            public string country { get; set; }
+            public int sunrise { get; set; }
+            public int sunset { get; set; }
+        }
+
         public class Weather
         {
+            public int id { get; set; }
+            public string main { get; set; }
             public string description { get; set; }
             public string icon { get; set; }
-
         }
+
+        public class Wind
+        {
+            public double speed { get; set; }
+            public int deg { get; set; }
+            public double gust { get; set; }
+        }
+
+
 
     }
 }
