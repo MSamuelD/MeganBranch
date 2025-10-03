@@ -45,6 +45,7 @@ namespace PetShop.Views
                 TestThing.Text = (weatherInfo.weather[0].description);
                 WeatherIcon.Source = new BitmapImage(new Uri($"http://openweathermap.org/img/wn/{weatherInfo.weather[0].icon}.png"));
                 //https://www.youtube.com/watch?v=FEObLap1iGE
+                SetWeatherSuggestion(weatherInfo.weather[0].description);
             }
 
 
@@ -56,7 +57,29 @@ namespace PetShop.Views
             //    $"Description: {weatherInfo.lists[0].weather[0].description}";
 
         }
-
+        public void SetWeatherSuggestion(string weather)
+        {
+            if (weather.Contains("rain"))
+            {
+                SuggestionTxt.Text = "It's raining, don't forget your umbrella!";
+            }
+            else if (weather.Contains("clear"))
+            {
+                SuggestionTxt.Text = "It's a clear day, enjoy the sunshine!";
+            }
+            else if (weather.Contains("cloud"))
+            {
+                SuggestionTxt.Text = "It's cloudy, a perfect day for a walk!";
+            }
+            else if (weather.Contains("snow"))
+            {
+                SuggestionTxt.Text = "It's snowy, stay warm out there!";
+            }
+            else
+            {
+                SuggestionTxt.Text = "Have a great day!";
+            }
+        }
         private void CloseBtn_Click(object sender, RoutedEventArgs e)
         {
             Close();
