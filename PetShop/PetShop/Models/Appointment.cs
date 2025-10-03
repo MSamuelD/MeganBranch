@@ -12,7 +12,7 @@ namespace PetShop.Models
         public int Id { get; set; }
 
         public string PetName { get; set; }
-        //public Customer Customer { get; set; }
+        public string CustomerName { get; set; }
         public string Details { get; set; }
         public Timeslot StartTime { get; set; }
         [DataType(DataType.Date)]
