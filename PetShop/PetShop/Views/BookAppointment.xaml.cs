@@ -35,7 +35,7 @@ namespace PetShop.Views
 
         private void CancelBtn1_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Weather());
+            this.NavigationService.Navigate(new WeatherScreen());
         }
 
         private void SubmitBtn_Click(object sender, RoutedEventArgs e)
@@ -53,7 +53,7 @@ namespace PetShop.Views
                 _context.Appointments.Add(appointment);
                 _context.SaveChanges();
                 MessageBox.Show("Appointment booked successfully!");
-                this.NavigationService.Navigate(new Weather());
+                this.NavigationService.Navigate(new WeatherScreen());
             }
             else
             {
