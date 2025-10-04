@@ -16,8 +16,9 @@
         </Grid.RowDefinitions>
 
         <TextBlock Text="Weather Information" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBlock x:Name="TestThing"  HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Grid.Row="1"/>
+        <TextBlock x:Name="TestThing"  HorizontalAlignment="Left" Margin="10,23,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Grid.Row="1"/>
         <Button Grid.Row="2" x:Name="CloseBtn" Content="Thanks" Height="56" Width="130" Click="CloseBtn_Click"  />
-        <Image x:Name="WeatherIcon" HorizontalAlignment="Left" Height="100" Margin="335,57,0,0" Grid.Row="1" VerticalAlignment="Top" Width="100"/>
+        <Image x:Name="WeatherIcon" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="20" Margin="10,10,0,0" Grid.Row="1" />
+        <TextBlock x:Name="SuggestionTxt" HorizontalAlignment="Left" Margin="10,44,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
     </Grid>
 </Window>
