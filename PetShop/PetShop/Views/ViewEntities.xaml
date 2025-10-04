@@ -9,6 +9,11 @@
       Title="ViewEntities">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="41*"/>
+            <RowDefinition Height="89*"/>
+            <RowDefinition Height="20*"/>
+        </Grid.RowDefinitions>
+        <DataGrid Grid.Row="1"></DataGrid>
     </Grid>
 </Page>
