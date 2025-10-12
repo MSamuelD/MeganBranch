@@ -26,6 +26,10 @@ namespace PetShop.Models
         public string? StreetNumber { get; set; }
         public string? Password { get; set; }
         public string? StreetName { get; set; }
+        public Person()
+        {
+
+        }
         public Person(int id, string firstName, string lastName, DateOnly dateOfBirth, string email, string phoneNumber, string streetNumber, string streetName, string city, string state, int zipCode, string country, string password)
         {
             Id = id;
