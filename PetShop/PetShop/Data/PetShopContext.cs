@@ -50,6 +50,17 @@ namespace PetShop.Data
             modelBuilder.Entity<Admin>().HasData(
                 new Admin( 1, "aRandomEmail", "AdminPassword123!")
             );
+            modelBuilder.Entity<Staff>().HasData(
+                new Staff { Id=3, City="Syd", Country="Aus", DateOfBirth=new DateOnly(2025,2,2), Email="email", FirstName="Staffy", LastName="McStaff", Password="password", PhoneNumber="123", State="NSW", StreetName="Street", StreetNumber = "123", ZipCode=2000 }
+            );
+            modelBuilder.Entity<Pet>().HasData(
+                new Pet { Id=1, Name="Buddy", TypeId=1,  CustomerId=2 },
+                new Pet { Id=2, Name="Mittens", TypeId=2, CustomerId=2 }
+            );
+            modelBuilder.Entity<Customer>().HasData(
+                new Customer(2, "John", "Doe", new DateOnly(1990, 1, 1), "", "", "", "","","",2000, "", "1234")    
+            );
+
             modelBuilder.Entity<Appointment>().HasOne(e => e.StartTime).WithMany().OnDelete(DeleteBehavior.NoAction);
 
         }
