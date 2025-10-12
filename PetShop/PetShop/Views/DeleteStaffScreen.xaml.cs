@@ -1,5 +1,4 @@
-﻿using PetShop.Data;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,12 +16,11 @@ using System.Windows.Shapes;
 namespace PetShop.Views
 {
     /// <summary>
-    /// Interaction logic for Page1.xaml
+    /// Interaction logic for DeleteStaffScreen.xaml
     /// </summary>
-    public partial class Onboarding : Page
+    public partial class DeleteStaffScreen : Page
     {
-        private readonly PetShopContext _context = new PetShopContext();
-        public Onboarding()
+        public DeleteStaffScreen()
         {
             InitializeComponent();
         }

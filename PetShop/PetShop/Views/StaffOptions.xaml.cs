@@ -19,12 +19,27 @@ namespace PetShop.Views
     /// <summary>
     /// Interaction logic for Page1.xaml
     /// </summary>
-    public partial class Onboarding : Page
+    public partial class StaffOptions : Page
     {
         private readonly PetShopContext _context = new PetShopContext();
-        public Onboarding()
+        public StaffOptions()
         {
             InitializeComponent();
+        }
+
+        private void AddStaff_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new AddStaffScreen());
+        }
+
+        private void UpdateStaff_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new UpdateStaffScreen());
+        }
+
+        private void DeleteStaff_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new DeleteStaffScreen());
         }
     }
 }

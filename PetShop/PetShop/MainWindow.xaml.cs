@@ -20,7 +20,7 @@ namespace PetShop
         public MainWindow()
         {
             InitializeComponent();
-            MainFrame.Navigate(new BookAppointment());
+            MainFrame.Navigate(new StaffOptions());
         }
     }
 }

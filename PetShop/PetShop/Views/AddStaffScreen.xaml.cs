@@ -19,10 +19,10 @@ namespace PetShop.Views
     /// <summary>
     /// Interaction logic for Page1.xaml
     /// </summary>
-    public partial class Onboarding : Page
+    public partial class AddStaffScreen : Page
     {
-        private readonly PetShopContext _context = new PetShopContext();
-        public Onboarding()
+
+        public AddStaffScreen()
         {
             InitializeComponent();
         }
