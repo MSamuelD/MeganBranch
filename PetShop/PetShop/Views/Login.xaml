@@ -17,15 +17,15 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="1">
             <TextBlock HorizontalAlignment="Center" Text="Username:"></TextBlock>
-            <TextBox  MaxWidth="123"></TextBox>
+            <TextBox x:Name="UserNameBox"  MaxWidth="123"></TextBox>
         </StackPanel>
         <StackPanel Grid.Row="2">
             <TextBlock HorizontalAlignment="Center" Text="Password:"></TextBlock>
-            <TextBox MaxWidth="123"></TextBox>
+            <TextBox x:Name="PasswordBox" MaxWidth="123"></TextBox>
         </StackPanel>
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Row="3">
-            <Button  Height="30" Width="60" Content="Login"></Button>
-            <Button Height="30" Width="60" Content="Shutdown"></Button>
+            <Button x:Name="LoginBtn"  Height="30" Width="60" Content="Login" Click="LoginBtn_Click"></Button>
+            <Button x:Name="ShutdownBtn" Height="30" Width="60" Content="Shutdown"></Button>
         </StackPanel>
     </Grid>
 </Page>
