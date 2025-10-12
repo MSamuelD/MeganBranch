@@ -1,5 +1,8 @@
-﻿using System;
+﻿using PetShop.Data;
+using PetShop.Models;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +23,59 @@ namespace PetShop.Views
     /// </summary>
     public partial class ViewEntities : Page
     {
+        private readonly PetShopContext _context = new PetShopContext();
         public ViewEntities()
         {
             InitializeComponent();
+
+        }
+
+        private void RoleBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (RoleBox.SelectedItem is ComboBoxItem selectedItem)
+            {
+                string role = selectedItem.Content.ToString();
+                switch (role)
+                {
+                    case "Pets":
+                        DisplayGrid.ItemsSource = new ObservableCollection<Pet>(_context.Pets.ToList());  
+                        break;
+                    case "Customers":
+                        DisplayGrid.ItemsSource =  new ObservableCollection<Customer>(_context.Customers.ToList());
+                        break;
+                    case "Staff":
+                        DisplayGrid.ItemsSource = new ObservableCollection<Staff>(_context.Staff.ToList());
+                        break;
+         
+                    default:
+                        DisplayGrid.ItemsSource = null; 
+                        break;
+                }
+            }
+        }
+
+        private void AddBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (RoleBox.SelectedItem is ComboBoxItem selectedItem)
+            {
+                string role = selectedItem.Content.ToString();
+                switch (role)
+                {
+                    case "Pets":
+                        this.NavigationService.Navigate(new AddStaffScreen());
+                        break;
+                    case "Customers":
+                        this.NavigationService.Navigate(new AddStaffScreen());
+                        break;
+                    case "Staff":
+                        this.NavigationService.Navigate(new AddStaffScreen());
+                        break;
+                    
+                    default:
+                        DisplayGrid.ItemsSource = null;
+                        break;
+                }
+            }
         }
     }
 }

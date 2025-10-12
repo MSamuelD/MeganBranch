@@ -9,11 +9,27 @@
       Title="ViewEntities">
 
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="139*"/>
+            <ColumnDefinition Width="21*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="41*"/>
-            <RowDefinition Height="89*"/>
-            <RowDefinition Height="20*"/>
+            <RowDefinition Height="77*"/>
+            <RowDefinition Height="46*"/>
+            <RowDefinition Height="267*"/>
+            <RowDefinition Height="60*"/>
         </Grid.RowDefinitions>
-        <DataGrid Grid.Row="1"></DataGrid>
+        <DataGrid x:Name="DisplayGrid" Grid.Row="2" Grid.ColumnSpan="2"></DataGrid> 
+        <ComboBox x:Name="RoleBox" Grid.Row="1" Grid.Column="1" Margin="10" SelectionChanged="RoleBox_SelectionChanged">
+            <ComboBoxItem Content="Staff" IsSelected="True"/>
+            <ComboBoxItem Content="Customers"/>
+            <ComboBoxItem Content="Pets"/>
+        </ComboBox>
+        <StackPanel Orientation="Horizontal" Grid.Row="3">
+            <Button x:Name="AddBtn" Content="Add New" Padding="14,10" Margin="10" Click="AddBtn_Click" />
+            <Button x:Name="UpdateBtn" Content="Update" Padding="14,10" Margin="10" />
+            <Button x:Name="DeleteBtn" Content="Delete" Padding="14,10" Margin="10" />
+            <Button x:Name="RefreshBtn" Content="Refresh" Padding="14,10" Margin="10" />
+        </StackPanel>
     </Grid>
 </Page>
