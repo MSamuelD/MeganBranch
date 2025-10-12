@@ -1,17 +1,18 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using PetShop.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
-using PetShop.Models;
-using System.Reflection.Metadata;
+using static PetShop.Models.WeatherAPI;
 
 namespace PetShop.Data
 {
     public class PetShopContext : DbContext
     {
-  
+        
  
         public DbSet<Pet> Pets { get; set; }
         public DbSet<Customer> Customers { get; set; }
@@ -45,6 +46,9 @@ namespace PetShop.Data
                 new Models.Type { Id = 3, Name = "Bird" },
                 new Models.Type { Id = 4, Name = "Fish" },
                 new Models.Type { Id = 5, Name = "Reptile" }
+            );
+            modelBuilder.Entity<Admin>().HasData(
+                new Admin( 1, "aRandomEmail", "AdminPassword123!")
             );
             modelBuilder.Entity<Appointment>().HasOne(e => e.StartTime).WithMany().OnDelete(DeleteBehavior.NoAction);
 
