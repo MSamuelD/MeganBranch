@@ -18,6 +18,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Text.Json;
 using PetShop.Models;
+using System.Windows.Media.Animation;
 namespace PetShop.Views
 {
     /// <summary>
@@ -29,25 +30,31 @@ namespace PetShop.Views
         /// Oh noo a hard coded API key, what could go wrong
         /// </summary>
         
-        private Uri Url = new("https://api.openweathermap.org/data/2.5/weather?q=Sydney&appid=f8e812b271726c264aca84cf7fe2025e");
         public WeatherScreen()
         {
             InitializeComponent();
-            getWeather();
+            GetWeather();
         }
-        public async void getWeather()
+        
+        private Uri Url = new("https://api.openweathermap.org/data/2.5/weather?q=Sydney&appid=f8e812b271726c264aca84cf7fe2025e");
+        public async Task<string> GetWeather()
         {
+            string response = "123";
             using (var client = new HttpClient())
             {
                 var result = await client.GetAsync(Url);
+                Debug.WriteLine(result);
                 var jsonString = await result.Content.ReadAsStringAsync();
                 WeatherAPI.Root weatherInfo = JsonSerializer.Deserialize<WeatherAPI.Root>(jsonString);
                 TestThing.Text = (weatherInfo.weather[0].description);
                 WeatherIcon.Source = new BitmapImage(new Uri($"http://openweathermap.org/img/wn/{weatherInfo.weather[0].icon}.png"));
                 //https://www.youtube.com/watch?v=FEObLap1iGE
                 SetWeatherSuggestion(weatherInfo.weather[0].description);
+                response = result.StatusCode.ToString();
+                Debug.WriteLine(response);
+                TestThing.Text = response;
             }
-
+            return response;
 
             //TestThing.Text = weatherInfo.city.name;
             //TestThing.Text = $"Weather in {weatherInfo.city.name}, {weatherInfo.city.country}\n" +
