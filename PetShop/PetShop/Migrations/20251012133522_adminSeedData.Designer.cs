@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PetShop.Data;
 
@@ -11,9 +12,11 @@ using PetShop.Data;
 namespace PetShop.Migrations
 {
     [DbContext(typeof(PetShopContext))]
-    partial class PetShopContextModelSnapshot : ModelSnapshot
+    [Migration("20251012133522_adminSeedData")]
+    partial class adminSeedData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -24,15 +27,18 @@ namespace PetShop.Migrations
 
             modelBuilder.Entity("PetShop.Models.Appointment", b =>
                 {
-                    b.Property<DateOnly>("Date")
-                        .HasColumnType("date");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
 
-                    b.Property<string>("StartTimeId")
-                        .HasColumnType("nvarchar(450)");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("CustomerName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateOnly>("Date")
+                        .HasColumnType("date");
 
                     b.Property<string>("Details")
                         .IsRequired()
@@ -45,7 +51,7 @@ namespace PetShop.Migrations
                     b.Property<DateTime>("StartTimeTime")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("Date", "StartTimeId");
+                    b.HasKey("Id");
 
                     b.HasIndex("StartTimeTime");
 
@@ -104,25 +110,6 @@ namespace PetShop.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Customers");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 2,
-                            Bookings = "[]",
-                            City = "",
-                            Country = "",
-                            DateOfBirth = new DateOnly(1990, 1, 1),
-                            Email = "",
-                            FirstName = "John",
-                            LastName = "Doe",
-                            Password = "1234",
-                            PhoneNumber = "",
-                            State = "",
-                            StreetName = "",
-                            StreetNumber = "",
-                            ZipCode = 2000
-                        });
                 });
 
             modelBuilder.Entity("PetShop.Models.Pet", b =>
@@ -150,22 +137,6 @@ namespace PetShop.Migrations
                     b.HasIndex("TypeId");
 
                     b.ToTable("Pets");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CustomerId = 2,
-                            Name = "Buddy",
-                            TypeId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CustomerId = 2,
-                            Name = "Mittens",
-                            TypeId = 2
-                        });
                 });
 
             modelBuilder.Entity("PetShop.Models.Staff", b =>
@@ -225,24 +196,6 @@ namespace PetShop.Migrations
                     b.HasDiscriminator().HasValue("Staff");
 
                     b.UseTphMappingStrategy();
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 3,
-                            City = "Syd",
-                            Country = "Aus",
-                            DateOfBirth = new DateOnly(2025, 2, 2),
-                            Email = "email",
-                            FirstName = "Staffy",
-                            LastName = "McStaff",
-                            Password = "password",
-                            PhoneNumber = "123",
-                            State = "NSW",
-                            StreetName = "Street",
-                            StreetNumber = "123",
-                            ZipCode = 2000
-                        });
                 });
 
             modelBuilder.Entity("PetShop.Models.Timeslot", b =>
@@ -407,7 +360,7 @@ namespace PetShop.Migrations
 
             modelBuilder.Entity("PetShop.Models.Pet", b =>
                 {
-                    b.HasOne("PetShop.Models.Customer", "Customer")
+                    b.HasOne("PetShop.Models.Customer", null)
                         .WithMany("Pets")
                         .HasForeignKey("CustomerId");
 
@@ -416,8 +369,6 @@ namespace PetShop.Migrations
                         .HasForeignKey("TypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Customer");
 
                     b.Navigation("Type");
                 });

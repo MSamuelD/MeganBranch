@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PetShop.Data;
+using PetShop.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,24 @@ namespace PetShop.Views
     /// </summary>
     public partial class Login : Page
     {
+        private readonly PetShopContext _context = new PetShopContext();
         public Login()
         {
             InitializeComponent();
+        }
+
+        private void LoginBtn_Click(object sender, RoutedEventArgs e)
+        {
+            string username = UserNameBox.Text;
+            string password = PasswordBox.Text;
+            List<Models.Admin> admins = _context.Admin.ToList();
+            Admin loggedInAdmin = admins.FirstOrDefault(a => a.Email == username && a.Password == password);
+            if (loggedInAdmin == null)
+            {
+                MessageBox.Show("Invalid username or password.");
+                return;
+            }
+            MessageBox.Show("Login Successful!");
         }
     }
 }

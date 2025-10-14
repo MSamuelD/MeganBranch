@@ -9,6 +9,7 @@
       Title="Weather">
 
     <Grid>
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="30*"/>
             <RowDefinition Height="130*"/>

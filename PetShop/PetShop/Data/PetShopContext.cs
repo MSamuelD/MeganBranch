@@ -1,17 +1,18 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using PetShop.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
-using PetShop.Models;
-using System.Reflection.Metadata;
+using static PetShop.Models.WeatherAPI;
 
 namespace PetShop.Data
 {
     public class PetShopContext : DbContext
     {
-  
+        
  
         public DbSet<Pet> Pets { get; set; }
         public DbSet<Customer> Customers { get; set; }
@@ -46,6 +47,20 @@ namespace PetShop.Data
                 new Models.Type { Id = 4, Name = "Fish" },
                 new Models.Type { Id = 5, Name = "Reptile" }
             );
+            modelBuilder.Entity<Admin>().HasData(
+                new Admin( 1, "aRandomEmail", "AdminPassword123!")
+            );
+            modelBuilder.Entity<Staff>().HasData(
+                new Staff { Id=3, City="Syd", Country="Aus", DateOfBirth=new DateOnly(2025,2,2), Email="email", FirstName="Staffy", LastName="McStaff", Password="password", PhoneNumber="123", State="NSW", StreetName="Street", StreetNumber = "123", ZipCode=2000 }
+            );
+            modelBuilder.Entity<Pet>().HasData(
+                new Pet { Id=1, Name="Buddy", TypeId=1,  CustomerId=2 },
+                new Pet { Id=2, Name="Mittens", TypeId=2, CustomerId=2 }
+            );
+            modelBuilder.Entity<Customer>().HasData(
+                new Customer(2, "John", "Doe", new DateOnly(1990, 1, 1), "", "", "", "","","",2000, "", "1234")    
+            );
+
             modelBuilder.Entity<Appointment>().HasOne(e => e.StartTime).WithMany().OnDelete(DeleteBehavior.NoAction);
 
         }
