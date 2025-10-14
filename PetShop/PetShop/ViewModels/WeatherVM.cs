@@ -14,19 +14,19 @@ namespace PetShop.ViewModels
     public class WeatherVM
     {
         private Uri Url = new("https://api.openweathermap.org/data/2.5/weather?q=Sydney&appid=f8e812b271726c264aca84cf7fe2025e");
-        public static async Task<string> GetWeather()
+        public static async Task<List<string>> GetWeather()
         {
-            string response = "123";
+            string jsonString = "";
+            string response = "";
             using (var client = new HttpClient())
             {
                 var result = await client.GetAsync(new Uri("https://api.openweathermap.org/data/2.5/weather?q=Sydney&appid=f8e812b271726c264aca84cf7fe2025e"));
-                Debug.WriteLine(result);
-                var jsonString = await result.Content.ReadAsStringAsync();
+                jsonString = await result.Content.ReadAsStringAsync();
                 WeatherAPI.Root weatherInfo = JsonSerializer.Deserialize<WeatherAPI.Root>(jsonString);
                 
                 response = result.StatusCode.ToString();
             }
-            return response;
+            return new List<string>() { response, jsonString };
 
             //TestThing.Text = weatherInfo.city.name;
             //TestThing.Text = $"Weather in {weatherInfo.city.name}, {weatherInfo.city.country}\n" +
