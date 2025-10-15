@@ -35,7 +35,7 @@ namespace PetShop.Views
 
         private void CancelBtn1_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new WeatherScreen());
+            NavigationService.Navigate(new ViewEntities());
         }
 
         private void SubmitBtn_Click(object sender, RoutedEventArgs e)

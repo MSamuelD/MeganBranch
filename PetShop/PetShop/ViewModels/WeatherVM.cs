@@ -13,7 +13,9 @@ namespace PetShop.ViewModels
 {
     public class WeatherVM
     {
-        private Uri Url = new("https://api.openweathermap.org/data/2.5/weather?q=Sydney&appid=f8e812b271726c264aca84cf7fe2025e");
+        /// <summary>
+        /// Oh noo a hard coded API key, what could go wrong
+        /// </summary>
         public static async Task<List<string>> GetWeather()
         {
             string jsonString = "";
@@ -28,13 +30,31 @@ namespace PetShop.ViewModels
             }
             return new List<string>() { response, jsonString };
 
-            //TestThing.Text = weatherInfo.city.name;
-            //TestThing.Text = $"Weather in {weatherInfo.city.name}, {weatherInfo.city.country}\n" +
-            //    $"Temperature: {Math.Round(weatherInfo.lists[0].temp.day - 273.15)}°C\n" +
-            //    $"Min: {Math.Round(weatherInfo.lists[0].temp.min - 273.15)}°C, Max: {Math.Round(weatherInfo.lists[0].temp.max - 273.15)}°C\n" +
-            //    $"Humidity: {weatherInfo.lists[0].humidity}%\n" +
-            //    $"Description: {weatherInfo.lists[0].weather[0].description}";
+           
 
+        }
+        public static string SetWeatherSuggestion(string weather)
+        {
+            if (weather.Contains("rain"))
+            {
+                return "It's raining, don't forget your umbrella!";
+            }
+            else if (weather.Contains("clear"))
+            {
+                return "It's a clear day, enjoy the sunshine!";
+            }
+            else if (weather.Contains("cloud"))
+            {
+                return "It's cloudy, a perfect day for a walk!";
+            }
+            else if (weather.Contains("snow"))
+            {
+                return "It's snowy, stay warm out there!";
+            }
+            else
+            {
+                return "Have a great day!";
+            }
         }
     }
 }

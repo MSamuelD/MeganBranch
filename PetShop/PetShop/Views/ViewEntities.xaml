@@ -3,8 +3,10 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:UserControl="clr-namespace:PetShop.UserControls"
       xmlns:local="clr-namespace:PetShop.Views"
       mc:Ignorable="d" 
+      
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ViewEntities">
 
@@ -14,11 +16,13 @@
             <ColumnDefinition Width="21*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
             <RowDefinition Height="77*"/>
             <RowDefinition Height="46*"/>
             <RowDefinition Height="267*"/>
             <RowDefinition Height="60*"/>
         </Grid.RowDefinitions>
+        <UserControl:Heading Grid.Row="0" Grid.ColumnSpan="2"/>
         <DataGrid x:Name="DisplayGrid" Grid.Row="2" Grid.ColumnSpan="2"></DataGrid> 
         <ComboBox x:Name="RoleBox" Grid.Row="1" Grid.Column="1" Margin="10" SelectionChanged="RoleBox_SelectionChanged">
             <ComboBoxItem Content="Staff" IsSelected="True"/>

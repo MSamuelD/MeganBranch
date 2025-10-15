@@ -12,20 +12,48 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using Prism.Commands;
+using PetShop.Views;
 namespace PetShop.UserControls
 {
     /// <summary>
     /// Interaction logic for Heading.xaml
     /// </summary>
-    public partial class Heading : UserControl
+    public partial class Heading : UserControl 
+        //ICommand
     {
+        public DelegateCommand<Button> TheCommand
+        {
+            get; private set;
+        }
         public Heading()
         {
             InitializeComponent();
+//            TheCommand = new DelegateCommand<Button>(Execute, CanExecute);
         }
 
-    
+        //public void Execute(object button)
+        //{
+           
+        //    return ;
+        //}
+
+        //public event EventHandler? CanExecuteChanged;
+
+        //public bool CanExecute(object? button)
+        //{
+        //    return false;
+        //}
+
         
+        //public bool CanExecute(object? parameter)
+        //{
+        //    throw new NotImplementedException();
     }
+
+    //public void Execute(object? parameter)
+    //{
+    //    throw new NotImplementedException();
+    //}
+
 }
