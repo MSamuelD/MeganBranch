@@ -41,6 +41,9 @@ namespace PetShop.Views
 
         private void AddCustomer(object s, RoutedEventArgs e)
         {
+            DateTime selectedDate = DOBDatePicker.SelectedDate.Value;
+
+            newCustomer.DateOfBirth = DateOnly.FromDateTime(selectedDate);
             _context.Customers.Add(newCustomer);
             _context.SaveChanges();
 

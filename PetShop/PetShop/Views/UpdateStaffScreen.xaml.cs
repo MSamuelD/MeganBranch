@@ -51,6 +51,9 @@ namespace PetShop.Views
 
         private void UpdateStaff(object s, RoutedEventArgs e)
         {
+
+            DateTime selectedDate = DOBDatePicker.SelectedDate.Value;
+            selectedStaff.DateOfBirth = DateOnly.FromDateTime(selectedDate);
             _context.Update(selectedStaff);
             _context.SaveChanges();
             GetStaff();

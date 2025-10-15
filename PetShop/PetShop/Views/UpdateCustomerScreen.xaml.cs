@@ -51,6 +51,9 @@ namespace PetShop.Views
 
         private void UpdateCustomer(object s, RoutedEventArgs e)
         {
+
+            DateTime selectedDate = DOBDatePicker.SelectedDate.Value;
+            selectedCustomer.DateOfBirth = DateOnly.FromDateTime(selectedDate);
             _context.Update(selectedCustomer);
             _context.SaveChanges();
             GetCustomer();

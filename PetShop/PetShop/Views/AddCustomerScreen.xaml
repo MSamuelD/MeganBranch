@@ -58,7 +58,7 @@
                         <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding LastName}"/>
 
                         <Label Grid.Row="2" Grid.Column="0" Content="Date of Birth"/>
-                        <DatePicker Grid.Row="2" Grid.Column="1"
+                        <DatePicker x:Name="DOBDatePicker" Grid.Row="2" Grid.Column="1"
                         SelectedDate="{Binding DateOfBirth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                         <Label Grid.Row="3" Grid.Column="0" Content="Phone Number"/>

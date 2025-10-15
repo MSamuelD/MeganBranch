@@ -41,6 +41,10 @@ namespace PetShop.Views
 
         private void AddStaff(object s, RoutedEventArgs e)
         {
+
+            DateTime selectedDate = DOBDatePicker.SelectedDate.Value;
+
+            newStaff.DateOfBirth = DateOnly.FromDateTime(selectedDate);
             _context.Staff.Add(newStaff);
             _context.SaveChanges();
 
