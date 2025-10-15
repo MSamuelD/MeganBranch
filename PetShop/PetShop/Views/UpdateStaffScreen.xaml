@@ -3,12 +3,131 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:PetShop.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="UpdateStaffScreen">
+      d:DesignHeight="450" d:DesignWidth="900"
+      Title="Edit Staff">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Label FontSize="18"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               Margin="5"
+               Grid.Row="0"
+               Content="Edit Staff"/>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <DataGrid x:Name="StaffDataGrid"
+                      AutoGenerateColumns="False"
+                      CanUserAddRows="False"
+                      IsReadOnly="True"
+                      Margin="5"
+                      IsSynchronizedWithCurrentItem="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Staff Id" Binding="{Binding Id}"/>
+                    <DataGridTextColumn Header="First Name" Binding="{Binding FirstName}"/>
+                    <DataGridTextColumn Header="Last Name" Binding="{Binding LastName}"/>
+                    <DataGridTextColumn Header="Date of Birth" Binding="{Binding DateOfBirth}"/>
+                    <DataGridTextColumn Header="Email" Binding="{Binding Email}"/>
+                    <DataGridTextColumn Header="Phone Number" Binding="{Binding PhoneNumber}"/>
+                    <DataGridTextColumn Header="City" Binding="{Binding City}"/>
+                    <DataGridTextColumn Header="State" Binding="{Binding State}"/>
+                    <DataGridTextColumn Header="Country" Binding="{Binding Country}"/>
+                    <DataGridTextColumn Header="Street Number" Binding="{Binding StreetNumber}"/>
+                    <DataGridTextColumn Header="Street Name" Binding="{Binding StreetName}"/>
+                    <DataGridTextColumn Header="Position" Binding="{Binding Position}"/>
+
+                    <DataGridTemplateColumn Header="Edit">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Edit" Click="SelectStaffToEdit"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <Border Grid.Column="1" Margin="5" BorderThickness="1" BorderBrush="Black">
+                <StackPanel Margin="5">
+                    <Label Content="Edit staff" FontWeight="Bold"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center" Margin="5"/>
+
+                    <Grid Name="UpdateStaffGrid">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" Content="First Name"/>
+                        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <Label Grid.Row="1" Grid.Column="0" Content="Last Name"/>
+                        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding LastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <Label Grid.Row="2" Grid.Column="0" Content="Date of Birth"/>
+                        <DatePicker Grid.Row="2" Grid.Column="1"
+                        SelectedDate="{Binding DateOfBirth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <Label Grid.Row="3" Grid.Column="0" Content="Phone Number"/>
+                        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding PhoneNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <Label Grid.Row="4" Grid.Column="0" Content="Street Number"/>
+                        <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding StreetNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <Label Grid.Row="5" Grid.Column="0" Content="Street Name"/>
+                        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding StreetName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <Label Grid.Row="6" Grid.Column="0" Content="City"/>
+                        <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding City, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <Label Grid.Row="7" Grid.Column="0" Content="State"/>
+                        <TextBox Grid.Row="7" Grid.Column="1" Text="{Binding State, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <Label Grid.Row="8" Grid.Column="0" Content="Post Code"/>
+                        <TextBox Grid.Row="8" Grid.Column="1" Text="{Binding ZipCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <Label Grid.Row="9" Grid.Column="0" Content="Country"/>
+                        <TextBox Grid.Row="9" Grid.Column="1" Text="{Binding Country, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <Label Grid.Row="10" Grid.Column="0" Content="Email"/>
+                        <TextBox Grid.Row="10" Grid.Column="1" Text="{Binding Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <Label Grid.Row="11" Grid.Column="0" Content="Position"/>
+                        <TextBox Grid.Row="11" Grid.Column="1" Text="{Binding Position, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <Button Grid.Row="12" Grid.ColumnSpan="2" Width="150"
+                                Click="UpdateStaff"
+                                Content="Update" Margin="5"
+                                HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                </StackPanel>
+            </Border>
+        </Grid>
     </Grid>
 </Page>
