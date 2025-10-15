@@ -3,13 +3,15 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:PetShop.Views" xmlns:UserControl="clr-namespace:PetShop.UserControls"
-      mc:Ignorable="d" 
+      xmlns:local="clr-namespace:PetShop.Views" xmlns:UserControl="clr-namespace:PetShop.UserControls" xmlns:src="clr-namespace:PetShop.Models"
+        mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Weather">
-
+    <Window.Resources>
+        <src:Ticker x:Key="ticker"/>
+    </Window.Resources>
     <Grid>
-        
+
         <Grid.RowDefinitions>
             <RowDefinition Height="30*"/>
             <RowDefinition Height="130*"/>
@@ -19,7 +21,11 @@
         <TextBlock Text="Weather Information" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <TextBlock x:Name="TestThing"  HorizontalAlignment="Left" Margin="10,23,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Grid.Row="1"/>
         <Button Grid.Row="2" x:Name="CloseBtn" Content="Thanks" Height="56" Width="130" Click="CloseBtn_Click"  />
-        <Image x:Name="WeatherIcon" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="20" Margin="10,10,0,0" Grid.Row="1" />
+        <Image x:Name="WeatherIcon" HorizontalAlignment="Left" Height="68" VerticalAlignment="Top" Width="69" Margin="10,65,0,0" Grid.Row="1" />
         <TextBlock x:Name="SuggestionTxt" HorizontalAlignment="Left" Margin="10,44,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <TextBlock x:Name="DegreeTxt"  HorizontalAlignment="Left" Margin="452,26,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Grid.Row="1"/>
+        <TextBlock x:Name="HumidityTxt" HorizontalAlignment="Left" Margin="452,47,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <TextBlock x:Name="SuggestionTxt_Copy" HorizontalAlignment="Left" Margin="452,77,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Source={StaticResource ticker}, Path=Now, Mode=OneWay}" VerticalAlignment="Top"/>
+        
     </Grid>
 </Window>

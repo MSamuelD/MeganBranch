@@ -47,7 +47,8 @@ namespace PetShop.Views
             WeatherIcon.Source = new BitmapImage(new Uri($"http://openweathermap.org/img/wn/{weatherInfo.weather[0].icon}.png"));
             //https://www.youtube.com/watch?v=FEObLap1iGE
             SuggestionTxt.Text = WeatherVM.SetWeatherSuggestion(weatherInfo.weather[0].description);
-           
+            HumidityTxt.Text = ($"Humidity: {weatherInfo.main.humidity}%");
+            DegreeTxt.Text = ($"Temperature: {Math.Round(weatherInfo.main.temp - 273.15)}°C");
         }
         
         private void CloseBtn_Click(object sender, RoutedEventArgs e)
