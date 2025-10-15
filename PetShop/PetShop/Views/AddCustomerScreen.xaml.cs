@@ -3,7 +3,6 @@ using PetShop.Data;
 using PetShop.Models;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,39 +19,34 @@ using System.Windows.Shapes;
 namespace PetShop.Views
 {
     /// <summary>
-    /// Interaction logic for UpdateStaffScreen.xaml
+    /// Interaction logic for Page1.xaml
     /// </summary>
-    public partial class DeleteStaffScreen : Page
+    public partial class AddCustomerScreen : Page
     {
         private readonly PetShopContext _context = new PetShopContext();
-        private ObservableCollection<Staff> _staffList;
-        Staff selectedStaff = new Staff();
+        Customer newCustomer = new Customer();
 
-        public DeleteStaffScreen()
+
+        public AddCustomerScreen()
         {
             InitializeComponent();
-            GetStaff();
 
-        }
+            NewCustomerDataGrid.DataContext = newCustomer;
 
-        private void GetStaff()
-        {
-            _staffList = new ObservableCollection<Staff>(_context.Staff.ToList());
-            StaffDataGrid.ItemsSource = _staffList;
+
 
         }
 
 
 
-
-        private void DeleteStaff(object s, RoutedEventArgs e)
+        private void AddCustomer(object s, RoutedEventArgs e)
         {
-
-            var staffToDelete = (s as FrameworkElement).DataContext as Staff;
-            _context.Staff.Remove(staffToDelete);
+            _context.Customers.Add(newCustomer);
             _context.SaveChanges();
-            GetStaff();
+
         }
+
+
 
 
 

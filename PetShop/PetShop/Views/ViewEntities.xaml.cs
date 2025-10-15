@@ -65,12 +65,61 @@ namespace PetShop.Views
                         this.NavigationService.Navigate(new AddStaffScreen());
                         break;
                     case "Customers":
-                        this.NavigationService.Navigate(new AddStaffScreen());
+                        this.NavigationService.Navigate(new AddCustomerScreen());
                         break;
                     case "Staff":
                         this.NavigationService.Navigate(new AddStaffScreen());
                         break;
                     
+                    default:
+                        DisplayGrid.ItemsSource = null;
+                        break;
+                }
+            }
+        }
+
+        private void UpdateBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (RoleBox.SelectedItem is ComboBoxItem selectedItem)
+            {
+                string role = selectedItem.Content.ToString();
+                switch (role)
+                {
+                    case "Pets":
+                        this.NavigationService.Navigate(new UpdateStaffScreen());
+                        break;
+                    case "Customers":
+                        this.NavigationService.Navigate(new UpdateStaffScreen());
+                        break;
+                    case "Staff":
+                        this.NavigationService.Navigate(new UpdateStaffScreen());
+                        break;
+
+                    default:
+                        DisplayGrid.ItemsSource = null;
+                        break;
+                }
+            }
+        }
+
+
+        private void DeleteBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (RoleBox.SelectedItem is ComboBoxItem selectedItem)
+            {
+                string role = selectedItem.Content.ToString();
+                switch (role)
+                {
+                    case "Pets":
+                        this.NavigationService.Navigate(new DeleteStaffScreen());
+                        break;
+                    case "Customers":
+                        this.NavigationService.Navigate(new DeleteCustomerScreen());
+                        break;
+                    case "Staff":
+                        this.NavigationService.Navigate(new DeleteStaffScreen());
+                        break;
+
                     default:
                         DisplayGrid.ItemsSource = null;
                         break;
