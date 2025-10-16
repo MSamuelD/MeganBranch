@@ -1,5 +1,9 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using PetShop.Data;
+using PetShop.Models;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +24,42 @@ namespace PetShop.Views
     /// </summary>
     public partial class UpdateStaffScreen : Page
     {
+        private readonly PetShopContext _context = new PetShopContext();
+        private ObservableCollection<Staff> _staffList;
+        Staff selectedStaff = new Staff();
+
         public UpdateStaffScreen()
         {
             InitializeComponent();
+            GetStaff();
+
         }
+
+        private void GetStaff()
+        {
+            _staffList = new ObservableCollection<Staff>(_context.Staff.ToList());
+            StaffDataGrid.ItemsSource = _staffList;
+
+        }
+
+        private void SelectStaffToEdit(object s, RoutedEventArgs e)
+        {
+            selectedStaff = (s as FrameworkElement).DataContext as Staff;
+            UpdateStaffGrid.DataContext = selectedStaff;
+        }
+
+
+        private void UpdateStaff(object s, RoutedEventArgs e)
+        {
+
+            DateTime selectedDate = DOBDatePicker.SelectedDate.Value;
+            selectedStaff.DateOfBirth = DateOnly.FromDateTime(selectedDate);
+            _context.Update(selectedStaff);
+            _context.SaveChanges();
+            GetStaff();
+        }
+
+
+
     }
 }
