@@ -20,38 +20,38 @@ using System.Windows.Shapes;
 namespace PetShop.Views
 {
     /// <summary>
-    /// Interaction logic for UpdateStaffScreen.xaml
+    /// Interaction logic for UpdateCustomerScreen.xaml
     /// </summary>
-    public partial class DeleteStaffScreen : Page
+    public partial class DeleteCustomerScreen : Page
     {
         private readonly PetShopContext _context = new PetShopContext();
-        private ObservableCollection<Staff> _staffList;
-        Staff selectedStaff = new Staff();
+        private ObservableCollection<Customer> _customerList;
+        Customer selectedCustomer = new Customer();
 
-        public DeleteStaffScreen()
+        public DeleteCustomerScreen()
         {
             InitializeComponent();
-            GetStaff();
+            GetCustomer();
 
         }
 
-        private void GetStaff()
+        private void GetCustomer()
         {
-            _staffList = new ObservableCollection<Staff>(_context.Staff.ToList());
-            StaffDataGrid.ItemsSource = _staffList;
+            _customerList = new ObservableCollection<Customer>(_context.Customers.ToList());
+            CustomerDataGrid.ItemsSource = _customerList;
 
         }
 
 
 
 
-        private void DeleteStaff(object s, RoutedEventArgs e)
+        private void DeleteCustomer(object s, RoutedEventArgs e)
         {
 
-            var staffToDelete = (s as FrameworkElement).DataContext as Staff;
-            _context.Staff.Remove(staffToDelete);
+            var customerToDelete = (s as FrameworkElement).DataContext as Customer;
+            _context.Customers.Remove(customerToDelete);
             _context.SaveChanges();
-            GetStaff();
+            GetCustomer();
         }
 
 

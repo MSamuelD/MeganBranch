@@ -18,7 +18,7 @@ namespace PetShop.Models
             Pets = new List<Pet>();
             Bookings = new List<DateTime>();
         }
-        public List<Pet> Pets { get; set; }
-        public List<DateTime> Bookings { get; set; }
+        public List<Pet>? Pets { get; set; }
+        public List<DateTime>? Bookings { get; set; }
     }
 }

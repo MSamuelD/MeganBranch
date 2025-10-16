@@ -25,7 +25,7 @@
 
             <Button Content="Add New Staff"    Padding="14,10" Margin="0,0,0,10" Click="AddStaff_Click"/>
             <Button Content="Update Staff"     Padding="14,10" Margin="0,0,0,10" Click="UpdateStaff_Click"/>
-            <Button Content="Delete Staff"     Padding="14,10" Click="DeleteStaff_Click"/>
+
         </StackPanel>
     </Grid>
 </Page>
