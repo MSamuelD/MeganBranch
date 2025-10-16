@@ -1,4 +1,6 @@
-﻿using PetShop.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using PetShop.Data;
+using PetShop.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,23 +21,36 @@ namespace PetShop.Views
     /// <summary>
     /// Interaction logic for Page1.xaml
     /// </summary>
-    public partial class StaffOptions : Page
+    public partial class AddCustomerScreen : Page
     {
         private readonly PetShopContext _context = new PetShopContext();
-        public StaffOptions()
+        Customer newCustomer = new Customer();
+
+
+        public AddCustomerScreen()
         {
             InitializeComponent();
+
+            NewCustomerDataGrid.DataContext = newCustomer;
+
+
+
         }
 
-        private void AddStaff_Click(object sender, RoutedEventArgs e)
+
+
+        private void AddCustomer(object s, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new AddStaffScreen());
+            DateTime selectedDate = DOBDatePicker.SelectedDate.Value;
+
+            newCustomer.DateOfBirth = DateOnly.FromDateTime(selectedDate);
+            _context.Customers.Add(newCustomer);
+            _context.SaveChanges();
+
         }
 
-        private void UpdateStaff_Click(object sender, RoutedEventArgs e)
-        {
-            this.NavigationService.Navigate(new UpdateStaffScreen());
-        }
+
+
 
 
     }
