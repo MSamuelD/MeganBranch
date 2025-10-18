@@ -48,12 +48,18 @@ namespace PetShop.Views
                     Date = DateOnly.FromDateTime(selectedDate),
                     StartTime = selectedTimeSlot,
                     Details = DetailsBox.Text,
-                    PetName = PetNameBox.Text
+                    PetName = PetNameBox.Text,
+                    CustomerName = HumanBox.Text 
                 };
+                if (_context.Appointments.Any(a => a.Date == appointment.Date && a.StartTimeId == appointment.StartTimeId))
+                {
+                    MessageBox.Show("The selected time slot is already booked. Please choose a different time.");
+                    return;
+                }
                 _context.Appointments.Add(appointment);
                 _context.SaveChanges();
                 MessageBox.Show("Appointment booked successfully!");
-                this.NavigationService.Navigate(new WeatherScreen());
+                
             }
             else
             {

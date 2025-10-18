@@ -23,9 +23,9 @@
         <Button Grid.Row="2" x:Name="CloseBtn" Content="Thanks" Height="56" Width="130" Click="CloseBtn_Click"  />
         <Image x:Name="WeatherIcon" HorizontalAlignment="Left" Height="68" VerticalAlignment="Top" Width="69" Margin="10,65,0,0" Grid.Row="1" />
         <TextBlock x:Name="SuggestionTxt" HorizontalAlignment="Left" Margin="10,44,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
-        <TextBlock x:Name="DegreeTxt"  HorizontalAlignment="Left" Margin="452,26,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Grid.Row="1"/>
-        <TextBlock x:Name="HumidityTxt" HorizontalAlignment="Left" Margin="452,47,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
-        <TextBlock x:Name="SuggestionTxt_Copy" HorizontalAlignment="Left" Margin="452,77,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Source={StaticResource ticker}, Path=Now, Mode=OneWay}" VerticalAlignment="Top"/>
-        
+        <TextBlock FontSize="32" x:Name="DegreeTxt"  HorizontalAlignment="Left" Margin="452,26,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Grid.Row="1"/>
+        <TextBlock x:Name="HumidityTxt" HorizontalAlignment="Left" Margin="10,114,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <TextBlock FontSize="24" x:Name="SuggestionTxt_Copy" HorizontalAlignment="Left" Margin="452,77,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Source={StaticResource ticker}, Path=Now, Mode=OneWay}" VerticalAlignment="Top"/>
+
     </Grid>
 </Window>
