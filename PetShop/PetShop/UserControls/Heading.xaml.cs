@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Prism.Commands;
 using PetShop.Views;
+using System.Windows.Automation.Provider;
 namespace PetShop.UserControls
 {
     /// <summary>
@@ -32,9 +33,10 @@ namespace PetShop.UserControls
 //            TheCommand = new DelegateCommand<Button>(Execute, CanExecute);
         }
 
+    
         //public void Execute(object button)
         //{
-           
+
         //    return ;
         //}
 
@@ -45,7 +47,7 @@ namespace PetShop.UserControls
         //    return false;
         //}
 
-        
+
         //public bool CanExecute(object? parameter)
         //{
         //    throw new NotImplementedException();

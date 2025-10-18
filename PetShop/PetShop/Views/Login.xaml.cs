@@ -32,14 +32,32 @@ namespace PetShop.Views
         {
             string username = UserNameBox.Text;
             string password = PasswordBox.Text;
-            List<Models.Admin> admins = _context.Admin.ToList();
+            List<Admin> admins = _context.Admin.ToList();
+            List<Customer> customers = _context.Customers.ToList();
+            List<Staff> staffs = _context.Staff.ToList();
+            Customer loggedInCustomer = customers.FirstOrDefault(c => c.Email == username && c.Password == password);
+            
+            
+            Staff loggedInStaff = staffs.FirstOrDefault(s => s.Email == username && s.Password == password);
+           
             Admin loggedInAdmin = admins.FirstOrDefault(a => a.Email == username && a.Password == password);
-            if (loggedInAdmin == null)
+            if (loggedInAdmin != null)
             {
-                MessageBox.Show("Invalid username or password.");
+                MessageBox.Show("Login Successful!");
+                NavigationService.Navigate(new AdminScreen());
                 return;
             }
-            MessageBox.Show("Login Successful!");
+            if (loggedInCustomer != null)
+            {
+            }
+            if (loggedInStaff != null)
+            {
+                MessageBox.Show("Login success!, feature not implemented");
+
+                return;
+            }
+            MessageBox.Show("Invalid username or password.");
+
         }
     }
 }
