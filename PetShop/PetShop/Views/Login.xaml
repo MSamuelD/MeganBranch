@@ -10,11 +10,12 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="188*"/>
+            <RowDefinition Height="188"/>
             <RowDefinition Height="86*"/>
             <RowDefinition Height="81*"/>
             <RowDefinition Height="95*"/>
         </Grid.RowDefinitions>
+        <Image Source="/Resources/Img/Logo.png" Height="188" Grid.Row="0"/>
         <StackPanel Grid.Row="1">
             <TextBlock HorizontalAlignment="Center" Text="Username:"></TextBlock>
             <TextBox x:Name="UserNameBox"  MaxWidth="123"></TextBox>

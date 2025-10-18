@@ -50,5 +50,7 @@
             <Button x:Name="SubmitBtn" Content="Submit" Width="100" Grid.Column="0" Height="30" Margin="0,0,10,0" Click="SubmitBtn_Click"/>
             <Button x:Name="CancelBtn" Content="Cancel" Width="100" Grid.Column="2" Height="30" Margin="0,0,10,0" Click="CancelBtn1_Click" />
         </Grid>
+        <TextBlock Text="Human name:" Grid.Column="3" Margin="10,10,86,45" Grid.Row="2"/>
+        <TextBox x:Name="HumanBox" Grid.Column="3" Margin="10,26,86,27" Grid.Row="2" />
     </Grid>
 </Page>
