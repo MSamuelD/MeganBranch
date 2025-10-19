@@ -26,7 +26,7 @@ namespace PetShop.Views
     {
         private readonly PetShopContext _context = new PetShopContext();
         private ObservableCollection<Staff> _staffList;
-        Staff selectedStaff = new Staff();
+        Staff staffToDelete = null;
 
         public DeleteStaffScreen()
         {
@@ -48,10 +48,19 @@ namespace PetShop.Views
         private void DeleteStaff(object s, RoutedEventArgs e)
         {
 
-            var staffToDelete = (s as FrameworkElement).DataContext as Staff;
+           staffToDelete = (s as FrameworkElement).DataContext as Staff;
+            if (staffToDelete == null)
+            {
+                MessageBox.Show("No Staff Selected");
+                return;
+            }
+
             _context.Staff.Remove(staffToDelete);
             _context.SaveChanges();
             GetStaff();
+
+
+                      
         }
 
 

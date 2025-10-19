@@ -73,7 +73,7 @@ namespace PetShop.Models
                         break;
 
                     case "LastName":
-                        if (string.IsNullOrWhiteSpace(LastName)
+                        if (string.IsNullOrWhiteSpace(LastName))
                         {
                             result = "You must enter a last name";
                         }
@@ -103,12 +103,17 @@ namespace PetShop.Models
 
                     case "Email":
 
-                        if (string.IsNullOrWhiteSpace(Email) || (!Email.Contains('@')))
+                        if (string.IsNullOrWhiteSpace(Email))
                         {
-                            result = "Email must not be empty and must contain '@' symbol.";
+                            result = "Email must not be empty.";
 
                         }
-                        break;
+
+                        else if (!Email.Contains("@"))
+                        {
+                            result = "Email must contain '@' symbol";
+                        }
+                            break;
 
                     case "PhoneNumber":
 
@@ -124,32 +129,52 @@ namespace PetShop.Models
                         break;
 
                     case "StreetNumber":
-                        if (!StreetNumber.All(char.IsDigit) || string.IsNullOrWhiteSpace(StreetNumber))
+                        if (string.IsNullOrWhiteSpace(StreetNumber))
                         {
-                           result="Street number must be non-empty and numeric.";
+                           result="Street number must be non-empty.";
                         }
-                        break;
+
+                        else if (!StreetNumber.All(char.IsDigit))
+                        {
+                            result = "Street number must only contain digits.";
+                        }
+                            break;
 
                     case "StreetName":
-                        if (StreetName.Any(char.IsDigit) || string.IsNullOrWhiteSpace(StreetName))
+                        if (string.IsNullOrWhiteSpace(StreetName))
                         {
-                            result="Street Name must be non empty and must not contain numbers.";
+                            result="Street Name must be non empty.";
                         }
-                        break;
+
+                        else if (StreetName.Any(char.IsDigit))
+                        {
+                            result = "Street Name must not contain numbers";
+                        }
+                            break;
 
                     case "City":
-                        if (City.Any(char.IsDigit) || string.IsNullOrWhiteSpace(City))
+                        if (string.IsNullOrWhiteSpace(City))
                         {
-                            result = "City must not contain numbers and must not be empty.";
+                            result = "City must not be empty.";
                         }
-                        break;
+
+                        else if (City.Any(char.IsDigit))
+                        {
+                            result = "City must not contain numbers";
+                        }
+                            break;
 
                     case "State":
-                        if (State.Any(char.IsDigit) || string.IsNullOrWhiteSpace(State))
+                        if (string.IsNullOrWhiteSpace(State))
                         {
-                            result = "State must not contain numbers and must not be empty.";
+                            result = "State must not be empty.";
                         }
-                        break;
+
+                        else if (State.Any(char.IsDigit))
+                        {
+                            result = "State must not contain numbers";
+                        }
+                            break;
 
                     case "ZipCode":
                         if (ZipCode == null)
@@ -159,11 +184,16 @@ namespace PetShop.Models
                         break;
 
                     case "Country":
-                        if ((string.IsNullOrWhiteSpace(Country) || Country.Any(char.IsDigit)))
+                        if ((string.IsNullOrWhiteSpace(Country)))
                         {
-                            result = ("Country must not be empty or contain numbers.";
+                            result = ("Country must not be empty");
                         }
-                        break;
+
+                        else if (Country.Any(char.IsDigit))
+                        {
+                            result = "Country must not contain numbers";
+                        }    
+                            break;
 
                     default:
                         break;

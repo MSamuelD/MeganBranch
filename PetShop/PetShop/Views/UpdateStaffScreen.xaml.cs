@@ -4,6 +4,7 @@ using PetShop.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,12 +27,13 @@ namespace PetShop.Views
     {
         private readonly PetShopContext _context = new PetShopContext();
         private ObservableCollection<Staff> _staffList;
-        Staff selectedStaff = new Staff();
+        Staff selectedStaff = null;
 
         public UpdateStaffScreen()
         {
             InitializeComponent();
             GetStaff();
+
 
         }
 
@@ -48,18 +50,45 @@ namespace PetShop.Views
             UpdateStaffGrid.DataContext = selectedStaff;
         }
 
+        private bool HasPropertyErrors(IDataErrorInfo obj)
+        {
+            foreach (PropertyDescriptor p in TypeDescriptor.GetProperties(obj))
+            {
+                if (obj[p.Name] != null) return true;
+            }
+            return false;
+        }
 
         private void UpdateStaff(object s, RoutedEventArgs e)
         {
 
+            if (selectedStaff == null)
+            {
+                MessageBox.Show("No staff selected");
+                return;
+            }
+
+            if (!DOBDatePicker.SelectedDate.HasValue)
+            {
+                MessageBox.Show("Date cannot be left blank");
+                return;
+            }
+
+
             DateTime selectedDate = DOBDatePicker.SelectedDate.Value;
             selectedStaff.DateOfBirth = DateOnly.FromDateTime(selectedDate);
-            _context.Update(selectedStaff);
+
+            if (HasPropertyErrors(selectedStaff))
+            {
+                MessageBox.Show("Please fix validation errors before saving.");
+                return;
+            }
+
+            _context.Staff.Update(selectedStaff);
             _context.SaveChanges();
+            MessageBox.Show("Staff Updated");
             GetStaff();
+
         }
-
-
-
     }
 }

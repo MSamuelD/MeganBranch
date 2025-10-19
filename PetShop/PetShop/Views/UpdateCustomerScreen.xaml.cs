@@ -4,6 +4,7 @@ using PetShop.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,7 +27,7 @@ namespace PetShop.Views
     {
         private readonly PetShopContext _context = new PetShopContext();
         private ObservableCollection<Customer> _CustomerList;
-        Customer selectedCustomer = new Customer();
+        Customer selectedCustomer = null;
 
         public UpdateCustomerScreen()
         {
@@ -48,18 +49,43 @@ namespace PetShop.Views
             UpdateCustomerGrid.DataContext = selectedCustomer;
         }
 
-
+        private bool HasPropertyErrors(IDataErrorInfo obj)
+        {
+            foreach (PropertyDescriptor p in TypeDescriptor.GetProperties(obj))
+            {
+                if (obj[p.Name] != null) return true;
+            }
+            return false;
+        }
         private void UpdateCustomer(object s, RoutedEventArgs e)
         {
 
+
+            if (selectedCustomer == null)
+            {
+                MessageBox.Show("No customer selected");
+                return;
+            }
+
+            if (!DOBDatePicker.SelectedDate.HasValue)
+            {
+                MessageBox.Show("Date cannot be left blank");
+                return;
+
+            }
+
             DateTime selectedDate = DOBDatePicker.SelectedDate.Value;
             selectedCustomer.DateOfBirth = DateOnly.FromDateTime(selectedDate);
+            if (HasPropertyErrors(selectedCustomer))
+            {
+                MessageBox.Show("Please fix validation errors before saving.");
+                return;
+            }
             _context.Update(selectedCustomer);
             _context.SaveChanges();
+            MessageBox.Show("Customer Updated");
             GetCustomer();
+
         }
-
-
-
     }
 }

@@ -26,7 +26,7 @@ namespace PetShop.Views
     {
         private readonly PetShopContext _context = new PetShopContext();
         private ObservableCollection<Customer> _customerList;
-        Customer selectedCustomer = new Customer();
+        Customer customerToDelete = null;
 
         public DeleteCustomerScreen()
         {
@@ -48,7 +48,12 @@ namespace PetShop.Views
         private void DeleteCustomer(object s, RoutedEventArgs e)
         {
 
-            var customerToDelete = (s as FrameworkElement).DataContext as Customer;
+            customerToDelete = (s as FrameworkElement).DataContext as Customer;
+            if (customerToDelete == null)
+            {
+                MessageBox.Show("No customer selected");
+                return;
+            }
             _context.Customers.Remove(customerToDelete);
             _context.SaveChanges();
             GetCustomer();
