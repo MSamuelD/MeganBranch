@@ -24,5 +24,30 @@ namespace PetShop.Views
         {
             InitializeComponent();
         }
+
+        private void CustomerOptions_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService?.Navigate(new CustomerOptions());
+        }
+
+        private void StaffOptions_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService?.Navigate(new StaffOptions());
+        }
+
+        private void WeatherScreen_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService?.Navigate(new WeatherScreen());
+        }
+
+        private void BookingStatistics_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService?.Navigate(new BookingStatisticsPage());
+        }
+
+        private void Pet_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService?.Navigate(new AddPetScreen());
+        }
     }
 }

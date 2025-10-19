@@ -49,7 +49,7 @@ namespace PetShop.Views
                     StartTime = selectedTimeSlot,
                     Details = DetailsBox.Text,
                     PetName = PetNameBox.Text,
-                    CustomerName = HumanBox.Text 
+                    CustomerName = CustomerNameBox.Text 
                 };
                 if (_context.Appointments.Any(a => a.Date == appointment.Date && a.StartTimeId == appointment.StartTimeId))
                 {

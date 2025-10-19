@@ -37,6 +37,11 @@ namespace PetShop.Views
             this.NavigationService.Navigate(new UpdateStaffScreen());
         }
 
+        private void DeleteStaff_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new DeleteStaffScreen());
+        }
+
 
     }
 }

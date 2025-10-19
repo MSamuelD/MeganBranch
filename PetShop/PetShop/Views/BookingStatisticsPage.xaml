@@ -1,0 +1,82 @@
+﻿<Page x:Class="PetShop.Views.BookingStatisticsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:oxy="http://oxyplot.org/wpf"
+      mc:Ignorable="d"
+      Title="BookingStatisticsPage"
+      d:DesignHeight="500" d:DesignWidth="800">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <!-- title -->
+            <RowDefinition Height="Auto"/>
+            <!-- all button -->
+            <RowDefinition Height="Auto"/>
+            <!-- KPI card-->
+            <RowDefinition Height="Auto"/>
+            <!-- Chart-->
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- title -->
+        <TextBlock Grid.Row="0"
+                   Text="Booking Statistics"
+                   FontSize="24" FontWeight="Bold"
+                   HorizontalAlignment="Center"
+                   Margin="0,0,0,12"/>
+
+        <!-- button for choose time, and chart type -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,10">
+            <Button Content="Day" Width="80" Margin="5" Click="BtnDay_Click"/>
+            <Button Content="Week" Width="80" Margin="5" Click="BtnWeek_Click"/>
+            <Button Content="Month" Width="80" Margin="5" Click="BtnMonth_Click"/>
+            <Button Content="Year" Width="80" Margin="5" Click="BtnYear_Click"/>
+
+            <TextBlock Text="Chart:" Margin="20,0,5,0" VerticalAlignment="Center"/>
+            <ComboBox x:Name="ChartSelector" Width="120" SelectionChanged="ChartSelector_SelectionChanged">
+                <ComboBoxItem Content="Bar Chart" IsSelected="True"/>
+                <ComboBoxItem Content="Pie Chart"/>
+            </ComboBox>
+        </StackPanel>
+
+        <!-- KPI Card -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,10">
+            <!-- total -->
+            <Border Background="#FFF" BorderBrush="#CCC" BorderThickness="1" CornerRadius="6" Padding="10" Margin="5">
+                <StackPanel>
+                    <TextBlock Text="Total Bookings" FontSize="12" Foreground="Gray"/>
+                    <TextBlock x:Name="KpiTotal" FontSize="18" FontWeight="Bold"/>
+                </StackPanel>
+            </Border>
+
+            <!-- top popular service -->
+            <Border Background="#FFF" BorderBrush="#CCC" BorderThickness="1" CornerRadius="6" Padding="10" Margin="5">
+                <StackPanel>
+                    <TextBlock Text="Top Service" FontSize="12" Foreground="Gray"/>
+                    <TextBlock x:Name="KpiTopService" FontSize="18" FontWeight="Bold"/>
+                </StackPanel>
+            </Border>
+
+            <!-- service trend -->
+            <Border Background="#FFF" BorderBrush="#CCC" BorderThickness="1" CornerRadius="6" Padding="10" Margin="5">
+                <StackPanel>
+                    <TextBlock Text="Trend" FontSize="12" Foreground="Gray"/>
+                    <TextBlock x:Name="KpiTrend" FontSize="18" FontWeight="Bold"/>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+
+        <!-- (used OxyPlot) chart-->
+        <oxy:PlotView x:Name="ChartView" Grid.Row="3"/>
+
+        <!-- point when no data -->
+        <TextBlock x:Name="NoDataHint"
+                   Grid.Row="3"
+                   Text="No data available"
+                   FontStyle="Italic" Foreground="Gray"
+                   HorizontalAlignment="Center" VerticalAlignment="Center"
+                   Visibility="Collapsed"/>
+    </Grid>
+</Page>

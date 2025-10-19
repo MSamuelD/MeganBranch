@@ -24,5 +24,22 @@ namespace PetShop.Views
         {
             InitializeComponent();
         }
+
+        private void BookAppointment_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new BookAppointment());
+        }
+
+        private void ServiceProgress_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new ServiceProgress());
+        }
+
+        private void WeatherScreen_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new WeatherScreen());
+        }
     }
 }
+
+

@@ -45,7 +45,7 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <Border Grid.Column="0" Grid.ColumnSpan="2" Margin="5" BorderThickness="1" BorderBrush="Black">
+            <Border Grid.Column="0" Grid.ColumnSpan="2" Margin="5,5,5,-192" BorderThickness="1" BorderBrush="Black">
                 <StackPanel Margin="5">
                     <Label Content="Enter New Staff Details" FontWeight="Bold"
                            HorizontalAlignment="Center"
