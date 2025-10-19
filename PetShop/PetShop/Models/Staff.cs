@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace PetShop.Models
 {
-    public class Staff: Person
+    public class Staff: Person, IDataErrorInfo
     {
         public Staff() { }
 

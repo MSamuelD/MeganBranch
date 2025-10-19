@@ -20,6 +20,9 @@ namespace PetShop
         public MainWindow()
         {
             InitializeComponent();
+            MainFrame.Navigate(new ViewEntities());
+
         }
+
     }
 }

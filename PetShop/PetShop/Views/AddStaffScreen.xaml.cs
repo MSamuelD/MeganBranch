@@ -3,6 +3,7 @@ using PetShop.Data;
 using PetShop.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,27 +33,41 @@ namespace PetShop.Views
             InitializeComponent();
 
             NewStaffDataGrid.DataContext = newStaff;
-    
+
 
 
         }
 
+        private bool HasPropertyErrors(IDataErrorInfo obj)
+        {
+            foreach (PropertyDescriptor p in TypeDescriptor.GetProperties(obj))
+            {
+                if (obj[p.Name] != null) return true;
+            }
+            return false;
+        }
 
 
         private void AddStaff(object s, RoutedEventArgs e)
         {
+            if (!DOBDatePicker.SelectedDate.HasValue)
+            {
+                MessageBox.Show("Date cannot be left blank");
+                return;
+            }
 
             DateTime selectedDate = DOBDatePicker.SelectedDate.Value;
-
             newStaff.DateOfBirth = DateOnly.FromDateTime(selectedDate);
+            if (HasPropertyErrors(newStaff))
+            {
+                MessageBox.Show("Please fix validation errors before saving.");
+                return;
+            }
+
             _context.Staff.Add(newStaff);
             _context.SaveChanges();
+            MessageBox.Show("New Staff Added");
 
         }
-
-
-
-
-
     }
 }

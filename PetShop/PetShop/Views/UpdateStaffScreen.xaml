@@ -7,6 +7,29 @@
       d:DesignHeight="450" d:DesignWidth="900"
       Title="Edit Staff">
 
+    <Page.Resources>
+        <Style TargetType="TextBox">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="True">
+                    <Setter Property="ToolTip"
+                Value="{Binding RelativeSource={RelativeSource Self},
+                                Path=(Validation.Errors)[0].ErrorContent}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="DatePicker">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="True">
+                    <Setter Property="ToolTip"
+                Value="{Binding RelativeSource={RelativeSource Self},
+                                Path=(Validation.Errors)[0].ErrorContent}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
+
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
@@ -44,7 +67,7 @@
                     <DataGridTextColumn Header="Country" Binding="{Binding Country}"/>
                     <DataGridTextColumn Header="Street Number" Binding="{Binding StreetNumber}"/>
                     <DataGridTextColumn Header="Street Name" Binding="{Binding StreetName}"/>
-                    <DataGridTextColumn Header="Street Name" Binding="{Binding Password}"/>
+                    <DataGridTextColumn Header="Password" Binding="{Binding Password}"/>
 
 
                     <DataGridTemplateColumn Header="Edit">
@@ -87,41 +110,41 @@
                         </Grid.ColumnDefinitions>
 
                         <Label Grid.Row="0" Grid.Column="0" Content="First Name"/>
-                        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 
                         <Label Grid.Row="1" Grid.Column="0" Content="Last Name"/>
-                        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding LastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding LastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 
                         <Label Grid.Row="2" Grid.Column="0" Content="Date of Birth"/>
                         <DatePicker x:Name="DOBDatePicker" Grid.Row="2" Grid.Column="1"
-                        SelectedDate="{Binding DateOfBirth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        SelectedDate="{Binding DateOfBirth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 
                         <Label Grid.Row="3" Grid.Column="0" Content="Phone Number"/>
-                        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding PhoneNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding PhoneNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 
                         <Label Grid.Row="4" Grid.Column="0" Content="Street Number"/>
-                        <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding StreetNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding StreetNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 
                         <Label Grid.Row="5" Grid.Column="0" Content="Street Name"/>
-                        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding StreetName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding StreetName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 
                         <Label Grid.Row="6" Grid.Column="0" Content="City"/>
-                        <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding City, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding City, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 
                         <Label Grid.Row="7" Grid.Column="0" Content="State"/>
-                        <TextBox Grid.Row="7" Grid.Column="1" Text="{Binding State, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Grid.Row="7" Grid.Column="1" Text="{Binding State, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 
                         <Label Grid.Row="8" Grid.Column="0" Content="Post Code"/>
-                        <TextBox Grid.Row="8" Grid.Column="1" Text="{Binding ZipCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Grid.Row="8" Grid.Column="1" Text="{Binding ZipCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True}"/>
 
                         <Label Grid.Row="9" Grid.Column="0" Content="Country"/>
-                        <TextBox Grid.Row="9" Grid.Column="1" Text="{Binding Country, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Grid.Row="9" Grid.Column="1" Text="{Binding Country, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 
                         <Label Grid.Row="10" Grid.Column="0" Content="Email"/>
-                        <TextBox Grid.Row="10" Grid.Column="1" Text="{Binding Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Grid.Row="10" Grid.Column="1" Text="{Binding Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
                         
                         <Label Grid.Row="11" Grid.Column="0" Content="Password"/>
-                        <TextBox Grid.Row="11" Grid.Column="1" Text="{Binding Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Grid.Row="11" Grid.Column="1" Text="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True}"/>
 
                         <Button Grid.Row="12" Grid.ColumnSpan="2" Width="150"
                                 Click="UpdateStaff"
